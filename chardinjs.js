@@ -10,13 +10,13 @@
                 this.data_attribute = 'data-chardin-intro';
                 this.chardinCssClasses = ["chardinjs-helper-layer", "chardinjs-show-element", "chardinjs-relative-position"];
                 this.$el = $(el);
-                this.sequenced = this.$el.data('chardinjs-sequenced') ? true : false;
+                this.sequenced = this.$el.data('chardin-sequenced') ? true : false;
                 this.sequencedItems = this._getSequencedElements();
                 this.sequenceIdx = 0;
                 this.active = false;
                 this.timeOut = null;
-                this.isAuto = this.$el.data('chardinjs-auto') ? true : false;
-                this.delayTime = this.$el.data('chardinjs-delay') || 2000;
+                this.isAuto = this.$el.data('chardin-auto') ? true : false;
+                this.delayTime = this.$el.data('chardin-delay') || 2000;
 
                 $(window).resize((function (_this) {
                     return function () {
@@ -459,8 +459,8 @@
             chardinJs.prototype._getSequencedElements = function () {
                 return this.$el.find('*[' + this.data_attribute + ']:visible').sort(function (a, b) {
                     var left, right;
-                    left = $(a).data('chardinjs-sequence') || 100;
-                    right = $(b).data('chardinjs-sequence') || 100;
+                    left = $(a).data('chardin-sequence') || 100;
+                    right = $(b).data('chardin-sequence') || 100;
                     return left - right;
                 });
             };

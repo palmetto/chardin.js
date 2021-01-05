@@ -41,12 +41,12 @@ If you want to increae the distance of the tooltip from the element, you can do 
 ```
 
 You can also run Chardin in sequenced mode, where one element will be displayed at a time, moving on to the next with a mouse click (or automatically after a set delay).
-Add `data-chardinjs-sequenced="true"` entry to the body tag. Also add `data-chardinjs-auto="true"` and `data-chardinjs-delay="100"` for automatic movement through the elements. Delay is in milliseconds.
-The default sequence is as loaded by the DOM, but this can be overridden using the tag `data-chardinjs-sequence` with a number. 
+Add `data-chardin-sequenced="true"` entry to the body tag. Also add `data-chardin-auto="true"` and `data-chardin-delay="100"` for automatic movement through the elements. Delay is in milliseconds.
+The default sequence is as loaded by the DOM, but this can be overridden using the tag `data-chardin-sequence` with a number. 
 If no auto-traversal is set, clicking will move sequentially through the elements, clicking with the shift key down will move backwards through them.
 
 ```HTML
-<body data-chardinjs-sequenced="true" data-chardinjs-auto="false" data-chardinjs-delay="800" >
+<body data-chardin-sequenced="true" data-chardin-auto="false" data-chardin-delay="800" >
 ```
 
 ## Running
