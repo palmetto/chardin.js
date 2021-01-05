@@ -28,23 +28,23 @@ There's a [`chardinjs-rails`](https://github.com/heelhook/chardin.js-rails) gem.
 
 Add the instructions to your elements:
 
-`data-intro`: Text to show with the instructions/tooltip. 
-`data-position`: (`left`, `top`, `right`, `bottom`), where to place the text with respect to the element.
+`data-chardinjs-intro`: Text to show with the instructions/tooltip. 
+`data-chardinjs-position`: (`left`, `top`, `right`, `bottom`), where to place the text with respect to the element.
 In addition you can alter the relative position of the tooltip text by placing a colon and a percentage value (-100 to 100) after the position text, eg "top:-50". 
 This will slide the tooltip along the length or height of the element away from the centre.
 If you want to increae the distance of the tooltip from the element, you can do it by placing a comma and a percentage value (100, 200, 300, 400 or 500) after the tooltip offset, eg "top:0,200". This will shift the tooltip to be twice farther away from the element than by default.
 
 ```HTML
-<img src="img/chardin.png" data-intro="An awesome 18th-century painter, who found beauty in everyday, common things." data-position="right" />
+<img src="img/chardin.png" data-chardinjs-intro="An awesome 18th-century painter, who found beauty in everyday, common things." data-chardinjs-position="right" />
 ```
 
 You can also run Chardin in sequenced mode, where one element will be displayed at a time, moving on to the next with a mouse click (or automatically after a set delay).
-Add `data-chardin-sequenced="true"` entry to the body tag. Also add `data-chardin-auto="true"` and `data-chardin-delay="100"` for automatic movement through the elements. Delay is in milliseconds.
-The default sequence is as loaded by the DOM, but this can be overridden using the tag `data-sequence` with a number. 
+Add `data-chardinjs-sequenced="true"` entry to the body tag. Also add `data-chardinjs-auto="true"` and `data-chardinjs-delay="100"` for automatic movement through the elements. Delay is in milliseconds.
+The default sequence is as loaded by the DOM, but this can be overridden using the tag `data-chardinjs-sequence` with a number. 
 If no auto-traversal is set, clicking will move sequentially through the elements, clicking with the shift key down will move backwards through them.
 
 ```HTML
-<body data-chardin-sequenced="true" data-chardin-auto="false" data-chardin-delay="800" >
+<body data-chardinjs-sequenced="true" data-chardinjs-auto="false" data-chardinjs-delay="800" >
 ```
 
 ## Running
@@ -91,7 +91,7 @@ $('body').chardinJs({ url: "/help/HelpOverlay.json" });
 Options are:
 
  - url: specifies a url that returns a json object containing text to show. This is useful to dynamically change the overlay, or to hold all your overlay text in one external file. 
-The json file should contain a set of name-value pairs, the name will match the data-intro attribute if it begins with a '#'. The value contains the required text and an optional position.
+The json file should contain a set of name-value pairs, the name will match the data-chardinjs-intro attribute if it begins with a '#'. The value contains the required text and an optional position.
 For conflicts between the data attributes and the json entries, the attribute takes precedence.
 
 Example:
@@ -108,13 +108,13 @@ Example:
 }
 ```
 
-This text will be shown against an element that has `data-intro='#summary-btns'`. If the data-intro does not start with a #, then the value will be used as the text to display. 
+This text will be shown against an element that has `data-chardinjs-intro='#summary-btns'`. If the data-chardinjs-intro does not start with a #, then the value will be used as the text to display. 
 If no entry is present for a given element's data reference, then nothing will be displayed.
 
- - attribute: changes the data attribute from data-intro to data-<as specified>.
+ - attribute: changes the data attribute from data-chardinjs-intro to data-<as specified>.
 Example:
 ```Javascript
-$('body').chardinJs({ attribute: 'data-intro' });
+$('body').chardinJs({ attribute: 'data-chardinjs-intro' });
 ```
 
 

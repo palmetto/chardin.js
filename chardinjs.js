@@ -7,16 +7,16 @@
         var chardinJs;
         chardinJs = (function () {
             function chardinJs(el) {
-                this.data_attribute = 'data-intro';
+                this.data_attribute = 'data-chardinjs-intro';
                 this.chardinCssClasses = ["chardinjs-helper-layer", "chardinjs-show-element", "chardinjs-relative-position"];
                 this.$el = $(el);
-                this.sequenced = this.$el.data('chardin-sequenced') ? true : false;
+                this.sequenced = this.$el.data('chardinjs-sequenced') ? true : false;
                 this.sequencedItems = this._getSequencedElements();
                 this.sequenceIdx = 0;
                 this.active = false;
                 this.timeOut = null;
-                this.isAuto = this.$el.data('chardin-auto') ? true : false;
-                this.delayTime = this.$el.data('chardin-delay') || 2000;
+                this.isAuto = this.$el.data('chardinjs-auto') ? true : false;
+                this.delayTime = this.$el.data('chardinjs-delay') || 2000;
 
                 $(window).resize((function (_this) {
                     return function () {
@@ -118,7 +118,7 @@
 
                 // create a div that holds 4 child sections - to mask off the rest of the page
                 overlay_layer = document.createElement("div");
-                overlay_layer.id = "chardin-mask";
+                overlay_layer.id = "chardinjs-mask";
 
                 element_position = this._get_offset(this.$el.get()[0]);
                 if (element_position) {
@@ -139,7 +139,7 @@
 
                 this.$el.get()[0].appendChild(overlay_layer);
 
-                this.$el.find("#chardin-mask").fadeIn();
+                this.$el.find("#chardinjs-mask").fadeIn();
 
                 overlay_layer.onclick = function (e) {
                     if (!_this.sequenced) {
@@ -156,7 +156,7 @@
                 this.$el.find('.chardinjs-relative-position').removeClass('chardinjs-relative-position');
                 this.$el.find(".chardinjs-no-fixed").removeClass("chardinjs-no-fixed");
 
-                this.$el.find("#chardin-mask").fadeOut(function () {
+                this.$el.find("#chardinjs-mask").fadeOut(function () {
                     return $(this).remove();
                 });
             }
@@ -186,7 +186,7 @@
                 if (helpref[0] == '#' && this.data_helptext[helpref].position)
                     positionString = this.data_helptext[helpref].position;
                 else
-                    positionString = element.getAttribute('data-position');
+                    positionString = element.getAttribute('data-chardinjs-position');
 
                 return positionString == null ? 'bottom' : (_ref = positionString.split(':')) != null ? _ref[0] : positionString;
             };
@@ -197,7 +197,7 @@
                 if (helpref[0] == '#' && this.data_helptext[helpref].position)
                     positionString = this.data_helptext[helpref].position;
                 else
-                    positionString = element.getAttribute('data-position');
+                    positionString = element.getAttribute('data-chardinjs-position');
 
                 return (positionString == null ? 1 : 1 + parseInt(((_ref = positionString.split(':')) != null ? (_ref[1] || '').split(',')[0] : void 0) || 0, 10) / 100);
             };
@@ -208,7 +208,7 @@
                 if (helpref[0] == '#' && this.data_helptext[helpref].position)
                     positionString = this.data_helptext[helpref].position;
                 else
-                    positionString = element.getAttribute('data-position');
+                    positionString = element.getAttribute('data-chardinjs-position');
 
                 return (positionString == null ? 100 : parseInt(((_ref = positionString.split(':')) != null ? (_ref[1] || '').split(',')[1] : void 0) || 100, 10));
             };
@@ -445,8 +445,8 @@
             chardinJs.prototype._getSequencedElements = function () {
                 return this.$el.find('*[' + this.data_attribute + ']:visible').sort(function (a, b) {
                     var left, right;
-                    left = $(a).data('sequence') || 100;
-                    right = $(b).data('sequence') || 100;
+                    left = $(a).data('chardinjs-sequence') || 100;
+                    right = $(b).data('chardinjs-sequence') || 100;
                     return left - right;
                 });
             };
