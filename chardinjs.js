@@ -7,7 +7,7 @@
         var chardinJs;
         chardinJs = (function () {
             function chardinJs(el) {
-                this.data_attribute = 'data-intro';
+                this.data_attribute = 'data-chardin-intro';
                 this.chardinCssClasses = ["chardinjs-helper-layer", "chardinjs-show-element", "chardinjs-relative-position"];
                 this.$el = $(el);
                 this.sequenced = this.$el.data('chardin-sequenced') ? true : false;
@@ -70,8 +70,16 @@
             };
 
             chardinJs.prototype.stop = function () {
-                var css, i, len, ref;
+                var css, i, len, ref, _elements, _i, el;
                 this.active = false;
+                _elements = this.$el.find('*[data-chardin-intro]:visible');
+
+                for (_i = 0, _len = _elements.length; _i < _len; _i++) {
+                    el = _elements[_i];
+                    if ($(el).data('chardin-class')) {
+                        $(el).removeClass($(el).data('chardin-class'));
+                    }
+                }
 
                 this._remove_overlay_layer();
                 this.$el.find('.chardinjs-helper-layer').remove();
@@ -118,7 +126,7 @@
 
                 // create a div that holds 4 child sections - to mask off the rest of the page
                 overlay_layer = document.createElement("div");
-                overlay_layer.id = "chardin-mask";
+                overlay_layer.id = "chardinjs-mask";
 
                 element_position = this._get_offset(this.$el.get()[0]);
                 if (element_position) {
@@ -139,7 +147,7 @@
 
                 this.$el.get()[0].appendChild(overlay_layer);
 
-                this.$el.find("#chardin-mask").fadeIn();
+                this.$el.find("#chardinjs-mask").fadeIn();
 
                 overlay_layer.onclick = function (e) {
                     if (!_this.sequenced) {
@@ -156,7 +164,7 @@
                 this.$el.find('.chardinjs-relative-position').removeClass('chardinjs-relative-position');
                 this.$el.find(".chardinjs-no-fixed").removeClass("chardinjs-no-fixed");
 
-                this.$el.find("#chardin-mask").fadeOut(function () {
+                this.$el.find("#chardinjs-mask").fadeOut(function () {
                     return $(this).remove();
                 });
             }
@@ -186,7 +194,7 @@
                 if (helpref[0] == '#' && this.data_helptext[helpref].position)
                     positionString = this.data_helptext[helpref].position;
                 else
-                    positionString = element.getAttribute('data-position');
+                    positionString = element.getAttribute('data-chardin-position');
 
                 return positionString == null ? 'bottom' : (_ref = positionString.split(':')) != null ? _ref[0] : positionString;
             };
@@ -197,7 +205,7 @@
                 if (helpref[0] == '#' && this.data_helptext[helpref].position)
                     positionString = this.data_helptext[helpref].position;
                 else
-                    positionString = element.getAttribute('data-position');
+                    positionString = element.getAttribute('data-chardin-position');
 
                 return (positionString == null ? 1 : 1 + parseInt(((_ref = positionString.split(':')) != null ? (_ref[1] || '').split(',')[0] : void 0) || 0, 10) / 100);
             };
@@ -208,7 +216,7 @@
                 if (helpref[0] == '#' && this.data_helptext[helpref].position)
                     positionString = this.data_helptext[helpref].position;
                 else
-                    positionString = element.getAttribute('data-position');
+                    positionString = element.getAttribute('data-chardin-position');
 
                 return (positionString == null ? 100 : parseInt(((_ref = positionString.split(':')) != null ? (_ref[1] || '').split(',')[1] : void 0) || 100, 10));
             };
@@ -310,7 +318,7 @@
 
 
             chardinJs.prototype._show_element = function (element) {
-                var helper_layer, tooltip_layer;
+                var helper_layer, tooltip_layer, helperClassNames;
                 helper_layer = document.createElement("div");
                 tooltip_layer = document.createElement("div");
 
@@ -329,8 +337,14 @@
                 if (element.id) {
                     helper_layer.setAttribute("data-id", element.id);
                 }
-
-                helper_layer.className = "chardinjs-helper-layer chardinjs-" + (this._get_position(element));
+                helperClassNames = ['chardinjs-helper-layer', "chardinjs-" + (this._get_position(element))];
+                if ($(element).data('chardin-helper-class')) {
+                    helperClassNames.push($(element).data('chardin-helper-class'));
+                }
+                helper_layer.className = helperClassNames.join(' ');
+                if ($(element).data('chardin-class')) {
+                    $(element).addClass($(element).data('chardin-class'));
+                }
                 this._position_helper_layer(element);
                 this.$el.get()[0].appendChild(helper_layer);
                 tooltip_layer.className = "chardinjs-tooltip chardinjs-" + (this._get_position(element));
@@ -445,8 +459,8 @@
             chardinJs.prototype._getSequencedElements = function () {
                 return this.$el.find('*[' + this.data_attribute + ']:visible').sort(function (a, b) {
                     var left, right;
-                    left = $(a).data('sequence') || 100;
-                    right = $(b).data('sequence') || 100;
+                    left = $(a).data('chardin-sequence') || 100;
+                    right = $(b).data('chardin-sequence') || 100;
                     return left - right;
                 });
             };

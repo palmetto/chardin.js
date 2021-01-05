@@ -2,7 +2,7 @@
 (function() {
   $(function() {
     $('body').chardinJs({
-      'attribute': 'data-intro'
+      'attribute': 'data-chardin-intro'
     });
 
     // trigger via a buttot
