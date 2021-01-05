@@ -72,7 +72,7 @@
             chardinJs.prototype.stop = function () {
                 var css, i, len, ref, _elements, _i, el;
                 this.active = false;
-                _elements = this.$el.find('*[data-intro]:visible');
+                _elements = this.$el.find('*[data-chardinjs-intro]:visible');
 
                 for (_i = 0, _len = _elements.length; _i < _len; _i++) {
                     el = _elements[_i];
