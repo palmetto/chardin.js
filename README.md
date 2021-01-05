@@ -28,14 +28,15 @@ There's a [`chardinjs-rails`](https://github.com/heelhook/chardin.js-rails) gem.
 
 Add the instructions to your elements:
 
-`data-chardinjs-intro`: Text to show with the instructions/tooltip. 
+`data-chardinjs-intro`: Text to show with the instructions/tooltip.  
 `data-chardinjs-position`: (`left`, `top`, `right`, `bottom`), where to place the text with respect to the element.
 In addition you can alter the relative position of the tooltip text by placing a colon and a percentage value (-100 to 100) after the position text, eg "top:-50". 
 This will slide the tooltip along the length or height of the element away from the centre.
-If you want to increae the distance of the tooltip from the element, you can do it by placing a comma and a percentage value (100, 200, 300, 400 or 500) after the tooltip offset, eg "top:0,200". This will shift the tooltip to be twice farther away from the element than by default.
+If you want to increae the distance of the tooltip from the element, you can do it by placing a comma and a percentage value (100, 200, 300, 400 or 500) after the tooltip offset, eg "top:0,200". This will shift the tooltip to be twice farther away from the element than by default.  
+`data-chardinjs-class`: A css class to add to the element while the overlay is shown.
 
 ```HTML
-<img src="img/chardin.png" data-chardinjs-intro="An awesome 18th-century painter, who found beauty in everyday, common things." data-chardinjs-position="right" />
+<img src="img/chardin.png" data-chardinjs-intro="An awesome 18th-century painter, who found beauty in everyday, common things." data-chardinjs-position="right" data-chardinjs-class="white-border" />
 ```
 
 You can also run Chardin in sequenced mode, where one element will be displayed at a time, moving on to the next with a mouse click (or automatically after a set delay).

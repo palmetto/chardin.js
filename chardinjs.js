@@ -70,8 +70,16 @@
             };
 
             chardinJs.prototype.stop = function () {
-                var css, i, len, ref;
+                var css, i, len, ref, _elements, _i, el;
                 this.active = false;
+                _elements = this.$el.find('*[data-intro]:visible');
+
+                for (_i = 0, _len = _elements.length; _i < _len; _i++) {
+                    el = _elements[_i];
+                    if ($(el).data('chardinjs-class')) {
+                        $(el).removeClass($(el).data('chardinjs-class'));
+                    }
+                }
 
                 this._remove_overlay_layer();
                 this.$el.find('.chardinjs-helper-layer').remove();
@@ -331,6 +339,9 @@
                 }
 
                 helper_layer.className = "chardinjs-helper-layer chardinjs-" + (this._get_position(element));
+                if ($(element).data('chardinjs-class')) {
+                    $(element).addClass($(element).data('chardinjs-class'));
+                  }                
                 this._position_helper_layer(element);
                 this.$el.get()[0].appendChild(helper_layer);
                 tooltip_layer.className = "chardinjs-tooltip chardinjs-" + (this._get_position(element));

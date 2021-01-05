@@ -94,3 +94,6 @@ body {
   margin: 10px;
 }
 
+.white-border {
+  border: 1px solid white;
+}
