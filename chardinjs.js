@@ -76,8 +76,8 @@
 
                 for (_i = 0, _len = _elements.length; _i < _len; _i++) {
                     el = _elements[_i];
-                    if ($(el).data('chardinjs-class')) {
-                        $(el).removeClass($(el).data('chardinjs-class'));
+                    if ($(el).data('chardin-class')) {
+                        $(el).removeClass($(el).data('chardin-class'));
                     }
                 }
 
@@ -338,12 +338,12 @@
                     helper_layer.setAttribute("data-id", element.id);
                 }
                 helperClassNames = ['chardinjs-helper-layer', "chardinjs-" + (this._get_position(element))];
-                if ($(element).data('chardinjs-helper-class')) {
-                    helperClassNames.push($(element).data('chardinjs-helper-class'));
+                if ($(element).data('chardin-helper-class')) {
+                    helperClassNames.push($(element).data('chardin-helper-class'));
                 }
                 helper_layer.className = helperClassNames.join(' ');
-                if ($(element).data('chardinjs-class')) {
-                    $(element).addClass($(element).data('chardinjs-class'));
+                if ($(element).data('chardin-class')) {
+                    $(element).addClass($(element).data('chardin-class'));
                 }
                 this._position_helper_layer(element);
                 this.$el.get()[0].appendChild(helper_layer);
