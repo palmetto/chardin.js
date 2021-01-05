@@ -318,7 +318,7 @@
 
 
             chardinJs.prototype._show_element = function (element) {
-                var helper_layer, tooltip_layer;
+                var helper_layer, tooltip_layer, helperClassNames;
                 helper_layer = document.createElement("div");
                 tooltip_layer = document.createElement("div");
 
@@ -337,11 +337,14 @@
                 if (element.id) {
                     helper_layer.setAttribute("data-id", element.id);
                 }
-
-                helper_layer.className = "chardinjs-helper-layer chardinjs-" + (this._get_position(element));
+                helperClassNames = ['chardinjs-helper-layer', "chardinjs-" + (this._get_position(element))];
+                if ($(element).data('chardinjs-helper-class')) {
+                    helperClassNames.push($(element).data('chardinjs-helper-class'));
+                }
+                helper_layer.className = helperClassNames.join(' ');
                 if ($(element).data('chardinjs-class')) {
                     $(element).addClass($(element).data('chardinjs-class'));
-                  }                
+                }
                 this._position_helper_layer(element);
                 this.$el.get()[0].appendChild(helper_layer);
                 tooltip_layer.className = "chardinjs-tooltip chardinjs-" + (this._get_position(element));

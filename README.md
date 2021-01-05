@@ -34,9 +34,10 @@ In addition you can alter the relative position of the tooltip text by placing a
 This will slide the tooltip along the length or height of the element away from the centre.
 If you want to increae the distance of the tooltip from the element, you can do it by placing a comma and a percentage value (100, 200, 300, 400 or 500) after the tooltip offset, eg "top:0,200". This will shift the tooltip to be twice farther away from the element than by default.  
 `data-chardinjs-class`: A css class to add to the element while the overlay is shown.
+`data-chardinjs-helper-class`: A css class to add to the `chardinjs-helper-layer` element, which contains the tooltip, while the overlay is shown.
 
 ```HTML
-<img src="img/chardin.png" data-chardinjs-intro="An awesome 18th-century painter, who found beauty in everyday, common things." data-chardinjs-position="right" data-chardinjs-class="white-border" />
+<img src="img/chardin.png" data-chardinjs-intro="An awesome 18th-century painter, who found beauty in everyday, common things." data-chardinjs-position="right" data-chardinjs-class="white-border" data-chardinjs-helper-class="italic" />
 ```
 
 You can also run Chardin in sequenced mode, where one element will be displayed at a time, moving on to the next with a mouse click (or automatically after a set delay).
