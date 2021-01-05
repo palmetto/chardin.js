@@ -7,7 +7,7 @@
         var chardinJs;
         chardinJs = (function () {
             function chardinJs(el) {
-                this.data_attribute = 'data-chardinjs-intro';
+                this.data_attribute = 'data-chardin-intro';
                 this.chardinCssClasses = ["chardinjs-helper-layer", "chardinjs-show-element", "chardinjs-relative-position"];
                 this.$el = $(el);
                 this.sequenced = this.$el.data('chardinjs-sequenced') ? true : false;
@@ -72,7 +72,7 @@
             chardinJs.prototype.stop = function () {
                 var css, i, len, ref, _elements, _i, el;
                 this.active = false;
-                _elements = this.$el.find('*[data-chardinjs-intro]:visible');
+                _elements = this.$el.find('*[data-chardin-intro]:visible');
 
                 for (_i = 0, _len = _elements.length; _i < _len; _i++) {
                     el = _elements[_i];
@@ -194,7 +194,7 @@
                 if (helpref[0] == '#' && this.data_helptext[helpref].position)
                     positionString = this.data_helptext[helpref].position;
                 else
-                    positionString = element.getAttribute('data-chardinjs-position');
+                    positionString = element.getAttribute('data-chardin-position');
 
                 return positionString == null ? 'bottom' : (_ref = positionString.split(':')) != null ? _ref[0] : positionString;
             };
@@ -205,7 +205,7 @@
                 if (helpref[0] == '#' && this.data_helptext[helpref].position)
                     positionString = this.data_helptext[helpref].position;
                 else
-                    positionString = element.getAttribute('data-chardinjs-position');
+                    positionString = element.getAttribute('data-chardin-position');
 
                 return (positionString == null ? 1 : 1 + parseInt(((_ref = positionString.split(':')) != null ? (_ref[1] || '').split(',')[0] : void 0) || 0, 10) / 100);
             };
@@ -216,7 +216,7 @@
                 if (helpref[0] == '#' && this.data_helptext[helpref].position)
                     positionString = this.data_helptext[helpref].position;
                 else
-                    positionString = element.getAttribute('data-chardinjs-position');
+                    positionString = element.getAttribute('data-chardin-position');
 
                 return (positionString == null ? 100 : parseInt(((_ref = positionString.split(':')) != null ? (_ref[1] || '').split(',')[1] : void 0) || 100, 10));
             };
